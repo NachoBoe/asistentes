@@ -48,7 +48,7 @@ with open('app/metodos_obj_str.pkl', 'rb') as archivo:
 index_name = "api11"
 credential = AzureKeyCredential(os.getenv("AZURE_AI_SEARCH_API_KEY"))
 endpoint = os.getenv("AZURE_AI_SEARCH_SERVICE_NAME")
-embeddings = AzureOpenAIEmbeddings(model="text-embedding-ada-002", endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"), api_key=os.getenv("AZURE_OPENAI_API_KEY"))
+embeddings = AzureOpenAIEmbeddings(model="text-embedding-ada-002", azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"), api_key=os.getenv("AZURE_OPENAI_API_KEY"))
 search_client = SearchClient(endpoint=endpoint, index_name=index_name, credential=credential)
 
 print(os.getenv("AZURE_OPENAI_ENDPOINT"))
