@@ -6,7 +6,7 @@ RUN poetry config virtualenvs.create false
 
 WORKDIR /code
 
-COPY .env . 
+# COPY .env . 
 
 COPY ./pyproject.toml ./README.md ./poetry.lock* ./
 
@@ -16,10 +16,9 @@ RUN poetry install  --no-interaction --no-ansi --no-root
 
 COPY ./app ./app
 
-
 RUN poetry install --no-interaction --no-ansi
 
-RUN export $(grep -v '^#' .env | xargs)
+# RUN export $(grep -v '^#' .env | xargs)
 
 EXPOSE 8080
 
