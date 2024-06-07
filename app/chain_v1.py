@@ -51,6 +51,7 @@ endpoint = os.getenv("AZURE_AI_SEARCH_SERVICE_NAME")
 embeddings = AzureOpenAIEmbeddings(model="text-embedding-ada-002")
 search_client = SearchClient(endpoint=endpoint, index_name=index_name, credential=credential)
 
+print(embeddings.embed_query("HOLA"))
 
 # DEFINIR TOOLS
 
