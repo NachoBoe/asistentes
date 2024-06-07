@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "API"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [
+    { include = "app" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+uvicorn = "^0.23.2"
+langserve = {extras = ["server"], version = ">=0.0.30,<0.2.1"} # Ajustar versión si es necesario
+pydantic = "<2"
+langsmith = "*"
+langchain_core = "*"
+langchain = "*"
+langchain_community = "*"
+langchain_openai = "*"
+langchain_anthropic = "*"
+dill = "*"
+pyprojroot = "*"
+flask = "*"
+python-dotenv = "*"
+chromadb = "*"  # Ajustar versión si es necesario
+fastapi = ">=0.90.1,<1"  # Asegurarse que esta versión es compatible
+pymongo = "*"
+azure-search = "*"
+azure-search-documents = "*"
+azure-identity = "*"
+
+[tool.poetry.group.dev.dependencies]
+langchain-cli = ">=0.0.15"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

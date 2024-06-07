@@ -1,0 +1,41 @@
+# IMPORTS
+
+from typing import Any, List, Union
+
+from fastapi import FastAPI
+from langchain_core.messages import AIMessage, FunctionMessage, HumanMessage
+from app.chain_v1 import agent_executor
+
+from langserve import add_routes
+from langserve.pydantic_v1 import BaseModel, Field
+
+app = FastAPI(
+    title="Server Asistentes Bantotal",
+    version="1.0",
+    description="Servidor que mantiene asistentes de Bantotal",
+)
+
+
+class Input(BaseModel):
+    input: str
+    chat_history: List[Union[HumanMessage, AIMessage, FunctionMessage]] = Field(
+        ...,
+        extra={"widget": {"type": "chat", "input": "input", "output": "output"}},
+    )
+
+
+class Output(BaseModel):
+    output: Any
+
+add_routes(
+    app,
+    agent_executor.with_types(input_type=Input, output_type=Output).with_config(
+        {"run_name": "agent"}
+    ),
+    path="/API"
+)
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="localhost", port=8000)
