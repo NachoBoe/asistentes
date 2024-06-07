@@ -55,7 +55,6 @@ print(os.getenv("AZURE_OPENAI_ENDPOINT"))
 print(os.getenv("AZURE_AI_SEARCH_SERVICE_NAME"))
 print(os.getenv("AZURE_OPENAI_API_KEY"))
 
-print(embeddings.embed_query("HOLA"))
 
 # DEFINIR TOOLS
 
