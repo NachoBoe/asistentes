@@ -16,6 +16,7 @@ RUN poetry install  --no-interaction --no-ansi --no-root
 
 COPY ./app ./app
 
+
 RUN poetry install --no-interaction --no-ansi
 
 RUN export $(grep -v '^#' .env | xargs)
