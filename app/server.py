@@ -9,6 +9,12 @@ from app.chain_v1 import agent_executor
 from langserve import add_routes
 from langserve.pydantic_v1 import BaseModel, Field
 
+from flask_cors import CORS
+
+from fastapi import FastAPI
+
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI(
     title="Server Asistentes Bantotal",
     version="1.0",
