@@ -21,7 +21,14 @@ app = FastAPI(
     description="Servidor que mantiene asistentes de Bantotal",
 )
 
-
+origins = ["http://localhost", "http://localhost:9000"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 class Input(BaseModel):
     input: str
     chat_history: List[Union[HumanMessage, AIMessage, FunctionMessage]] = Field(
